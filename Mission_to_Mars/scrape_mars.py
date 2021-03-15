@@ -1,9 +1,11 @@
 from splinter import Browser
 from bs4 import BeautifulSoup
+from webdriver_manager.chrome import ChromeDriverManager
+# import time
 
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
-    executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
+    executable_path = {'executable_path': ChromeDriverManager().install()}
     return Browser("chrome", **executable_path, headless=False)
 
 
@@ -25,7 +27,7 @@ def scrape():
     news_soup=BeautifulSoup(html,'html.parser')
     first_article=news_soup.find('ul', class_='item_list')
     news_title=first_article.find('div', class_='content_title').a.text
-    news_p=first_article.a.text
+    news_p=first_article.find('div', class_='article_teaser_body').text
 
     mars_data['news_title']=news_title
     mars_data['news_p']=news_p
