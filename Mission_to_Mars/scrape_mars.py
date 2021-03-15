@@ -33,6 +33,19 @@ def scrape():
     mars_data['news_title']=news_title
     mars_data['news_p']=news_p
 
+    # JPL Mars Space Images - Featured Image
+    browser.visit(url_2)
+    dropdown_content=browser.find_by_css('.-active')
+
+    for button in dropdown_content:
+        button.click()
+
+    
+    html=browser.html
+    pic_soup=BeautifulSoup(html,'html.parser')
+    featured_image_url=pic_soup.find('img', class_='BaseImage')['src']
+    mars_data['featured_img_url']=featured_image_url
+    # print(featured_image_url) 
 
     # Mars Facts tables scraping using pandas
     tables = pd.read_html(url_3)
