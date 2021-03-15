@@ -25,21 +25,41 @@
             <p>{{mars_stuff.news_p}}</p>
       </div>
     </div>
-    
+
     <div class="row" id=second_row>
       <div class="col-md-8">
             <h5>Featured Mars Image</h5>
             <p>Image goes here </p>
       </div>
       <div class="col-md-4">
-            {{mars_stuff.table}}
+            {{mars_stuff.table|safe}}
       </div>
     </div>
 
     <div class="row" id="hemispheres">
       <div class="col-md-12">
-        <p>{{mars_stuff.hemispheres}}</p>
-      
+        <h4>Mars Hemispheres</h4>
+      </div>
+    <div class="row" id="hemispheres_1">
+      <div class="col-md-6">
+        <img src="{{mars_stuff.hemispheres[0]['img_url']}}" class="img-responsive">
+        <h6>{{mars_stuff.hemispheres[0]['title']}}</h6>
+      </div>
+      <div class="col-md-6">
+        <img src="{{mars_stuff.hemispheres[1]['img_url']}}" class="img-responsive">
+        <h6>{{mars_stuff.hemispheres[1]['title']}}</h6>
+      </div>
+    </div>
+    <div class="row" id="hemispheres_2">
+      <div class="col-md-6">
+        <img src="{{mars_stuff.hemispheres[2]['img_url']}}" class="img-responsive">
+        <h6>{{mars_stuff.hemispheres[2]['title']}}</h6>
+      </div>
+      <div class="col-md-6">
+        <img src="{{mars_stuff.hemispheres[3]['img_url']}}" class="img-responsive">
+        <h6>{{mars_stuff.hemispheres[3]['title']}}</h6>
+      </div>
+    </div>
       </div>
     </div>
 

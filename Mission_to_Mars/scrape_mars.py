@@ -51,7 +51,6 @@ def scrape():
     base_url='https://astrogeology.usgs.gov'
     img_dict_list=[]
 
-# browser.visit(url_4)
 
     for each_photo in photos:
     #     find img_url
