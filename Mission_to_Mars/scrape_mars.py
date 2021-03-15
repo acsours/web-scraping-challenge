@@ -74,7 +74,8 @@ def scrape():
         
     #     go back to original page to follow next link
         browser.visit(url_4)
-    mars_data['hemispheres']=img_dict_list
+        mars_data['hemispheres']=img_dict_list
+
 
     browser.quit()
 
