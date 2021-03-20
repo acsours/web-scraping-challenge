@@ -14,7 +14,7 @@ def scrape():
     browser = init_browser()
     mars_data = {}
     # NASA Mars News
-    url_1 = "https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
+    url_1 = "https://mars.nasa.gov/news/"    
     # JPL Mars Space Images - Featured Image
     url_2 = "https://www.jpl.nasa.gov/images?search=&category=Mars"
     # Mars Facts
@@ -40,10 +40,17 @@ def scrape():
     for button in dropdown_content:
         button.click()
 
-    
-    html=browser.html
-    pic_soup=BeautifulSoup(html,'html.parser')
-    featured_image_url=pic_soup.find('img', class_='BaseImage')['src']
+
+    browser.links.find_by_partial_text('Featured Image').click()
+    browser.links.find_by_partial_text('JPG').click()
+    featured_image_url=browser.url
+    # html=browser.html
+    # pic_soup=BeautifulSoup(html,'html.parser')
+    # featured_image_url=pic_soup.find('img', class_='BaseImage')['src']
+
+    # browser.find_by_css('img.BaseImage').first.click()
+    # browser.links.find_by_partial_text('JPG').click()
+    # featured_image_url=browser.url
     mars_data['featured_img_url']=featured_image_url
     # print(featured_image_url) 
 
@@ -51,8 +58,8 @@ def scrape():
     tables = pd.read_html(url_3)
     mars_facts_df=tables[0]
     mars_facts_df.columns=['Metric', 'measurement']
-    mars_facts_df=mars_facts_df.set_index('Metric')
-    html_table = mars_facts_df.to_html()
+    # mars_facts_df=mars_facts_df.set_index('Metric')
+    html_table = mars_facts_df.to_html(index=False)
 
     mars_data['table']=html_table
 

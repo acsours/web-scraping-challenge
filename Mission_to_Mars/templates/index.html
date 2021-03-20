@@ -20,52 +20,39 @@
     <!-- Mars Info -->
     <div class="row" id="news_article">
       <div class="col-md-12">
-            <h4 class="heading">Latest News</h4>
-            <h5>{{mars_stuff.news_title}}</h5>
+            <h2 class="heading">Latest News</h2>
+            <h4>{{mars_stuff.news_title}}</h4>
             <p>{{mars_stuff.news_p}}</p>
       </div>
     </div>
 
     <div class="row" id=second_row>
       <div class="col-md-8">
-            <h5>Featured Mars Image</h5>
+            <h2>Featured Mars Image</h2>
             <img src="{{mars_stuff.featured_img_url}}" class="img-responsive">
 
       </div>
       <div class="col-md-4">
+        <h2>Mars Facts</h2>
             {{mars_stuff.table|safe}}
       </div>
     </div>
 
     <div class="row" id="hemispheres">
       <div class="col-md-12">
-        <h4>Mars Hemispheres</h4>
+        <h2>Mars Hemispheres</h2>
       </div>
-    <div class="row" id="hemispheres_1">
-      <div class="col-md-6">
-        <img src="{{mars_stuff.hemispheres[0]['img_url']}}" class="img-responsive">
-        <h6>{{mars_stuff.hemispheres[0]['title']}}</h6>
-      </div>
-      <div class="col-md-6">
-        <img src="{{mars_stuff.hemispheres[1]['img_url']}}" class="img-responsive">
-        <h6>{{mars_stuff.hemispheres[1]['title']}}</h6>
-      </div>
-    </div>
-    <div class="row" id="hemispheres_2">
-      <div class="col-md-6">
-        <img src="{{mars_stuff.hemispheres[2]['img_url']}}" class="img-responsive">
-        <h6>{{mars_stuff.hemispheres[2]['title']}}</h6>
-      </div>
-      <div class="col-md-6">
-        <img src="{{mars_stuff.hemispheres[3]['img_url']}}" class="img-responsive">
-        <h6>{{mars_stuff.hemispheres[3]['title']}}</h6>
-      </div>
-    </div>
-      </div>
-    </div>
-
         
-    
+    <div class="row">
+      {% for hemisphere in mars_stuff.hemispheres %}
+      <div class="col-md-6">
+        <img src="{{hemisphere.img_url | default('static/images/error.png', true)}}" alt="..." class="img-responsive">
+        <div class="caption">
+          <h3>{{hemisphere.title}}</h3>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
     
 
   </div>

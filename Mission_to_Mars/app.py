@@ -27,7 +27,7 @@ def scraper():
     mars_dict = scrape_mars.scrape()
     # update collection with the mars_dict 
     # {} no filter meants update everything, upsert will override, you are updating it with your mars dictionary with 2 keys
-    # collection.drop() ??
+
     collection.update({}, mars_dict, upsert=True)
     # after it calls the scrape method, redirect to the homepage
     return redirect("/", code=302)
