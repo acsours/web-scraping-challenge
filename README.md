@@ -11,5 +11,4 @@ This is a web scraping app written using python, pymongo, and flask.
 
 ![dashboard.png](Mission_to_Mars/images/dashboard.png?raw=true "Title")
 
-#### Comparisons Page
 ![hemispheres.png](Mission_to_Mars/images/hemispheres.png?raw=true "Title")
